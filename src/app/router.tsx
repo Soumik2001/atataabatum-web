@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         <Header />
         <div className="max-w-[1440px] mx-auto w-full p-6 text-center flex-1 flex items-center justify-center">
           <p className="text-xl sm:text-2xl font-bold">
-            Select an instrument to research
+            Research Page — coming soon
           </p>
         </div>
       </div>
