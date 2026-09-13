@@ -5,7 +5,6 @@ import { InstrumentDetail } from "../features/markets/InstrumentDetail";
 import { OrderTicket } from "../features/trade/OrderTicket";
 import { Header } from "../components/layout/Header";
 import { Portfolio } from "../features/portfolio/Portfolio";
-import { Research } from "../features/research/Research";
 
 export const router = createBrowserRouter([
   { path: "/", element: <Dashboard /> },
@@ -37,6 +36,15 @@ export const router = createBrowserRouter([
   },
   {
     path: "/research",
-    element: <Research />,
+    element: (
+      <div className="min-h-screen bg-navy text-ice flex flex-col">
+        <Header />
+        <div className="max-w-[1440px] mx-auto w-full p-6 text-center flex-1 flex items-center justify-center">
+          <p className="text-xl sm:text-2xl font-bold">
+            Research page — coming soon
+          </p>
+        </div>
+      </div>
+    ),
   },
 ]);
