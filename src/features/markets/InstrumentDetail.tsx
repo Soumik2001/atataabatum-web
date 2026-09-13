@@ -52,8 +52,6 @@ export function InstrumentDetail() {
   }
 
   const isPositive = instrument.change >= 0;
-  const maxBid = Math.max(...bidLevels);
-  const maxAsk = Math.max(...askLevels);
   const bidData = bidLevels.map((val, i) => ({ name: `b${i}`, value: val }));
   const askData = askLevels.map((val, i) => ({ name: `a${i}`, value: val }));
 

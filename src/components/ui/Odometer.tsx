@@ -1,4 +1,4 @@
-const DIGITS = '0123456789';
+const DIGITS = "0123456789";
 
 function OdometerDigit({ digit, delay }: { digit: string; delay: number }) {
   const index = DIGITS.indexOf(digit);
@@ -9,11 +9,11 @@ function OdometerDigit({ digit, delay }: { digit: string; delay: number }) {
         className="flex flex-col leading-none transition-transform ease-out"
         style={{
           transform: `translateY(-${index}em)`,
-          transitionDuration: '3000ms',
+          transitionDuration: "3000ms",
           transitionDelay: `${delay}ms`,
         }}
       >
-        {DIGITS.split('').map((d) => (
+        {DIGITS.split("").map((d) => (
           <span key={d} className="h-[1em] leading-none block">
             {d}
           </span>
@@ -24,17 +24,16 @@ function OdometerDigit({ digit, delay }: { digit: string; delay: number }) {
 }
 
 export function Odometer({ value }: { value: string }) {
-  const chars = value.split('');
-  const digitPositions = chars.filter((c) => /\d/.test(c)).length;
-
-  let digitIndexFromRight = 0;
+  const chars = value.split("");
 
   return (
     <span className="inline-flex">
       {chars.map((char, i) => {
         if (/\d/.test(char)) {
           // count how many digits are to the right of this one (including itself)
-          const digitsAfterThis = chars.slice(i).filter((c) => /\d/.test(c)).length;
+          const digitsAfterThis = chars
+            .slice(i)
+            .filter((c) => /\d/.test(c)).length;
           const positionFromRight = digitsAfterThis - 1; // 0 = rightmost digit
           const delay = positionFromRight * 140; // rightmost = 0ms, each one left starts 120ms later
           return <OdometerDigit key={i} digit={char} delay={delay} />;
