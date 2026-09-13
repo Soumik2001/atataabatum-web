@@ -36,7 +36,7 @@ export function Odometer({ value }: { value: string }) {
           // count how many digits are to the right of this one (including itself)
           const digitsAfterThis = chars.slice(i).filter((c) => /\d/.test(c)).length;
           const positionFromRight = digitsAfterThis - 1; // 0 = rightmost digit
-          const delay = positionFromRight * 120; // rightmost = 0ms, each one left starts 120ms later
+          const delay = positionFromRight * 140; // rightmost = 0ms, each one left starts 120ms later
           return <OdometerDigit key={i} digit={char} delay={delay} />;
         }
         return (

@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import themeReducer from '../features/ui/themeSlice';
+import orderReducer from '../features/trade/orderSlice';
 
 export const store = configureStore({
   reducer: {
-    // Add your reducers here
+    theme: themeReducer,
+    order: orderReducer,
   },
 });
 

@@ -17,17 +17,89 @@
 }
 
 @theme {
-  --color-navy: #0a2342; /* base canvas */
-  --color-panel: #14396e; /* cards, tables, modules */
-  --color-action: #2f80ed; /* primary buttons, links, selected state */
-  --color-signal: #2e9e4f; /* gains, filled orders, verified */
-  --color-alert: #e8871e; /* warnings, pending, promoted */
-  --color-ice: #eaf1fb; /* primary text/data on dark surfaces */
+  --color-navy: #0a2342;
+  --color-panel: #14396e;
+  --color-action: #2f80ed;
+  --color-signal: #2e9e4f;
+  --color-alert: #e8871e;
+  --color-ice: #eaf1fb;
   --color-d-blue: #071a33;
+  --color-card-border: #1d4a87;
+  --color-nav-divider: #2d5a9c;
+  --breakpoint-xs: 480px;
   --font-tabular: "Calibri", ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-theme="light"] {
+  --color-signal: #197a38;
+  --color-alert: #a85b08;
+  --color-action: #1a5fbf;
+  --color-navy: #eaf1fb;
+  --color-panel: #ffffff;
+  --color-ice: #0a2342;
+  --color-d-blue: #dbe6f5;
+  --color-card-border: #d6e0ee;
+  --color-nav-divider: #b8c9e0;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-signal text-white font-bold py-4 rounded-[10px] text-base sm:text-lg
+      hover:cursor-pointer hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-signal/30
+      active:translate-y-0 active:brightness-95
+      transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-action text-white font-bold py-4 rounded-[10px] text-base sm:text-lg
+      hover:cursor-pointer hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-action/30
+      active:translate-y-0 active:brightness-95
+      transition-all duration-200;
+  }
+
+  .btn-caution {
+    @apply bg-alert text-white font-bold py-4 rounded-[10px] text-base sm:text-lg
+      hover:cursor-pointer hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-alert/30
+      active:translate-y-0 active:brightness-95
+      transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-ice font-bold py-4 rounded-[10px] text-base sm:text-lg
+      border-2 border-action/50
+      hover:cursor-pointer hover:bg-action/10 hover:border-action hover:-translate-y-0.5
+      active:translate-y-0 active:bg-action/20
+      transition-all duration-200;
+  }
+}
+
+html {
+  /* scrollbar-gutter: stable; */
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-tabular);
   background: var(--color-navy);
+  transition: background 0.3s ease;
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
 }
